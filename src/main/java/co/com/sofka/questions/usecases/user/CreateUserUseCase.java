@@ -68,8 +68,6 @@ public class CreateUserUseCase implements SaveUser {
       return completeName;
   }
 
-   /* private final BiFunction<UserRepository, UserDTO, Mono<User>> validateBeforeInsert
-            = (repo, user) -> repo.findById(user.getId());*/
 
     private Mono<String> validateBeforeInsert(UserDTO userDTO){
         return userRepository.findById(userDTO.getId()).map(user -> user.getId());
