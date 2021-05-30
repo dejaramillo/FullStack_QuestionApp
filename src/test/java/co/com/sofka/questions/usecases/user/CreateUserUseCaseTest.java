@@ -31,7 +31,7 @@ class CreateUserUseCaseTest {
         user.setAlternativeEmail("test@gma.com");
 
         Mockito.when(userRepository.save(Mockito.any(User.class))).thenReturn(Mono.just(user));
-
+        Mockito.when(userRepository.findById(userDTO.getId())).thenReturn(Mono.just(user));
         var resultUserId = createUserUseCase.apply(userDTO).block();
 
         Assertions.assertEquals(resultUserId,user.getId());
